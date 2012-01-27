@@ -1,0 +1,18 @@
+#!/bin/sh       
+ANDROID_REVISION=15
+ANDROID_LOCATION=/opt
+
+# cd $ANDROID_LOCATION 
+# sudo wget http://dl.google.com/android/android-sdk_r$ANDROID_REVISION-linux.tgz
+# sudo tar --no-same-owner -xzvf android-sdk_r$ANDROID_REVISION-linux.tgz
+# sudo chmod -R a+xr android-sdk-linux
+# sudo rm android-sdk_r$ANDROID_REVISION-linux.tgz
+# sudo $ANDROID_LOCATION/android-sdk-linux/tools/android update sdk -u -t platform-tool
+# sudo $ANDROID_LOCATION/android-sdk-linux/tools/android update sdk -u -t platform
+
+cd ~
+echo -e "\n##############################################\n#\n# PATH Additions\n#\n\n"  >> .bashrc
+echo "ANDROID_HOME=$ANDROID_LOCATION/android-sdk-linux" >> .bashrc
+echo "RUBY_GEM_HOME=/var/lib/gems/1.8" >> .bashrc
+echo -e "PATH=$""PATH:$""ANDROID_HOME/tools:$""ANDROID_HOME/platform-tools:$""RUBY_GEM_HOME/bin\n" >> .bashrc
+source .bashrc
