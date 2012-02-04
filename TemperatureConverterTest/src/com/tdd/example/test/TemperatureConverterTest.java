@@ -2,7 +2,6 @@ package com.tdd.example.test;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
-import android.view.Window;
 import android.widget.EditText;
 import static android.test.ViewAsserts.assertOnScreen;
 
@@ -27,10 +26,8 @@ public class TemperatureConverterTest extends
 	protected void setUp() throws Exception {
 		super.setUp();
 		mActivity = getActivity();
-		mCelsius = (EditText) mActivity
-				.findViewById(com.tdd.example.R.id.celsius);
-		mFahrenheit = (EditText) mActivity
-				.findViewById(com.tdd.example.R.id.fahrenheit);
+		mCelsius = (EditText) mActivity.findViewById(com.tdd.example.R.id.celsius);
+		mFahrenheit = (EditText) mActivity.findViewById(com.tdd.example.R.id.fahrenheit);
 	}
 
 	protected void tearDown() throws Exception {
@@ -45,7 +42,7 @@ public class TemperatureConverterTest extends
 		assertNotNull(mCelsius);
 		assertNotNull(mFahrenheit);
 	}
-
+	
 	public void testThatFieldsAreInitiallyEmpty() {
 		assertEquals("", mCelsius.getText().toString());
 		assertEquals("", mFahrenheit.getText().toString());

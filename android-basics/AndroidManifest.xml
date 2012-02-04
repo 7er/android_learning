@@ -31,6 +31,27 @@
             android:name=".LifeCycleTest"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:label="Life Cycle Test" />
+        <activity
+            android:name=".SingleTouchTest"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:label="Single Touch Test" />
+        <activity
+            android:name=".MultiTouchTest"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:label="Multi Touch Test" />
+        <activity
+            android:name=".KeyTest"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:label="Key Test" />
+        <activity
+            android:name=".AccelerometerTest"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:label="Accelerometer Test" />
+        <activity
+            android:name=".AssetsTest"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:label="Assetsr Test" />
+        
     </application>
 
 </manifest>
