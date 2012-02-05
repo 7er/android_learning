@@ -13,26 +13,28 @@
         android:id="@+id/celsius_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/celsius" />
+        android:text="@string/celsius"
+        android:textSize="@dimen/label_text_size" />
 
-    <EditText
-        android:inputType="number"
+    <com.tdd.example.EditNumber
         android:id="@+id/celsius"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="number"
         android:text="" />
 
     <TextView
         android:id="@+id/fahrenheit_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/fahrenheit" />
+        android:text="@string/fahrenheit"
+        android:textSize="@dimen/label_text_size" />
 
-    <EditText
-        android:inputType="number"
+    <com.tdd.example.EditNumber
         android:id="@+id/fahrenheit"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="number"
         android:text="" />
 
 </LinearLayout>

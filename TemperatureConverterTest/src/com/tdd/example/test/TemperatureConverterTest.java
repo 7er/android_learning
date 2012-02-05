@@ -1,57 +1,46 @@
 package com.tdd.example.test;
 
-import android.test.ActivityInstrumentationTestCase2;
-import android.view.View;
-import android.widget.EditText;
-import static android.test.ViewAsserts.assertOnScreen;
+import java.util.HashMap;
 
-import com.tdd.example.TemperatureConverterActivity;
+import com.tdd.example.TemperatureConverter;
 
-public class TemperatureConverterTest extends
-		ActivityInstrumentationTestCase2<TemperatureConverterActivity> {
+import junit.framework.TestCase;
 
-	private TemperatureConverterActivity mActivity;
-	private EditText mCelsius;
-	private EditText mFahrenheit;
-
-	public TemperatureConverterTest() {
-		this("TemperatureConverterActivityTest");
-	}
+public class TemperatureConverterTest extends TestCase {
 
 	public TemperatureConverterTest(String name) {
-		super("com.tdd.example", TemperatureConverterActivity.class);
-		setName(name);
+		super(name);
 	}
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		mActivity = getActivity();
-		mCelsius = (EditText) mActivity.findViewById(com.tdd.example.R.id.celsius);
-		mFahrenheit = (EditText) mActivity.findViewById(com.tdd.example.R.id.fahrenheit);
 	}
 
 	protected void tearDown() throws Exception {
 		super.tearDown();
 	}
 
-	public void testPreconditions() {
-		assertNotNull(mActivity);
+	private static final HashMap<Double, Double> conversionTableDouble = new HashMap<Double, Double>();
+	static {
+		// initialize (c, f) pairs
+		conversionTableDouble.put(0.0, 32.0);
+		conversionTableDouble.put(100.0, 212.0);
+		conversionTableDouble.put(-1.0, 30.20);
+		conversionTableDouble.put(-100.0, -148.0);
+		conversionTableDouble.put(32.0, 89.60);
+		conversionTableDouble.put(-40.0, -40.0);
+		conversionTableDouble.put(-273.0, -459.40);
 	}
 
-	public void testHasInputFields() {
-		assertNotNull(mCelsius);
-		assertNotNull(mFahrenheit);
-	}
-	
-	public void testThatFieldsAreInitiallyEmpty() {
-		assertEquals("", mCelsius.getText().toString());
-		assertEquals("", mFahrenheit.getText().toString());
-	}
-
-	public final void testFieldsOnScreen() {
-		final View origin = mActivity.getWindow().getDecorView();
-		assertOnScreen(origin, mCelsius);
-		assertOnScreen(origin, mFahrenheit);
+	public final void testFahrenheitToCelsius() {
+		for (double c : conversionTableDouble.keySet()) {
+			final double f = conversionTableDouble.get(c);
+			final double ca = TemperatureConverter.fahrenheitToCelsius(f);
+			final double delta = Math.abs(ca - c);
+			final String msg = "" + f + "F -> " + c + "C but is " + ca
+					+ " (delta " + delta + ")";
+			assertTrue(msg, delta < 0.0001);
+		}
 	}
 
 }
