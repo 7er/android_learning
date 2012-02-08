@@ -50,8 +50,30 @@
         <activity
             android:name=".AssetsTest"
             android:configChanges="keyboard|keyboardHidden|orientation"
-            android:label="Assetsr Test" />
-        
-    </application>
+            android:label="Assets Test" />
+        <activity
+            android:name=".FullScreenTest"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:label="Full Screen Test"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RenderViewTest"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:label="Render View Test"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ShapeTest"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:label="Shape Test"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".SurfaceViewTest"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:label="Surface View Test"
+            android:screenOrientation="portrait" >
+        </activity>
+        </application>
 
 </manifest>
