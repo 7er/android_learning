@@ -1,8 +1,8 @@
-package com.androidgames.framework.impl;
+package com.badlogic.androidgames.framework.impl;
 
-import com.androidgames.framework.Audio;
-import com.androidgames.framework.Music;
-import com.androidgames.framework.Sound;
+import com.badlogic.androidgames.framework.Audio;
+import com.badlogic.androidgames.framework.Music;
+import com.badlogic.androidgames.framework.Sound;
 
 public class AndroidAudio implements Audio {
 

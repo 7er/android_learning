@@ -1,7 +1,7 @@
 package com.androidgames.mrnom;
 
 
-import com.androidgames.framework.Screen;
+import com.badlogic.androidgames.framework.Screen;
 
 public class LoadingScreen extends Screen {
 

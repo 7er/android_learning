@@ -1,7 +1,7 @@
 package com.androidgames.mrnom;
 
-import com.androidgames.framework.Screen;
-import com.androidgames.framework.impl.AndroidGame;
+import com.badlogic.androidgames.framework.Screen;
+import com.badlogic.androidgames.framework.impl.AndroidGame;
 
 public class MrNomGame extends AndroidGame {
 	@Override

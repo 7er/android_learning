@@ -1,4 +1,4 @@
-package com.androidgames.framework;
+package com.badlogic.androidgames.framework;
 
 public interface Game {
     public Input getInput();

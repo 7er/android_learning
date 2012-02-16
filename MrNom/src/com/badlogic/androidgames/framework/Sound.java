@@ -1,4 +1,4 @@
-package com.androidgames.framework;
+package com.badlogic.androidgames.framework;
 
 public interface Sound {
     public void play(float volume);

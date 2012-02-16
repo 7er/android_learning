@@ -1,8 +1,8 @@
-package com.androidgames.framework;
+package com.badlogic.androidgames.framework;
 
 import java.util.List;
 
-import com.androidgames.framework.Input.TouchEvent;
+import com.badlogic.androidgames.framework.Input.TouchEvent;
 
 import android.view.View.OnTouchListener;
 

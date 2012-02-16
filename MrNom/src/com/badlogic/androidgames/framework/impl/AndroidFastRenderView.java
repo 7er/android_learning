@@ -1,4 +1,4 @@
-package com.androidgames.framework.impl;
+package com.badlogic.androidgames.framework.impl;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

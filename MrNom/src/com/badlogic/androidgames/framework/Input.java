@@ -1,4 +1,4 @@
-package com.androidgames.framework;
+package com.badlogic.androidgames.framework;
 
 import java.util.List;
 

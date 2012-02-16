@@ -1,11 +1,11 @@
-package com.androidgames.framework.impl;
+package com.badlogic.androidgames.framework.impl;
 
-import com.androidgames.framework.Audio;
-import com.androidgames.framework.FileIO;
-import com.androidgames.framework.Game;
-import com.androidgames.framework.Graphics;
-import com.androidgames.framework.Input;
-import com.androidgames.framework.Screen;
+import com.badlogic.androidgames.framework.Audio;
+import com.badlogic.androidgames.framework.FileIO;
+import com.badlogic.androidgames.framework.Game;
+import com.badlogic.androidgames.framework.Graphics;
+import com.badlogic.androidgames.framework.Input;
+import com.badlogic.androidgames.framework.Screen;
 
 import android.app.Activity;
 import android.content.Context;

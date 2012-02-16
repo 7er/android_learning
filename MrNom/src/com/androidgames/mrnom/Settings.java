@@ -1,6 +1,6 @@
 package com.androidgames.mrnom;
 
-import com.androidgames.framework.Game;
+import com.badlogic.androidgames.framework.Game;
 
 public class Settings {
 	public static boolean soundEnabled = true;

@@ -1,10 +1,10 @@
 package com.androidgames.mrnom;
 
-import com.androidgames.framework.Game;
-import com.androidgames.framework.Graphics;
-import com.androidgames.framework.Graphics.PixmapFormat;
-import com.androidgames.framework.Pixmap;
-import com.androidgames.framework.Sound;
+import com.badlogic.androidgames.framework.Game;
+import com.badlogic.androidgames.framework.Graphics;
+import com.badlogic.androidgames.framework.Pixmap;
+import com.badlogic.androidgames.framework.Sound;
+import com.badlogic.androidgames.framework.Graphics.PixmapFormat;
 
 public class Assets {
 	public static Pixmap	background;

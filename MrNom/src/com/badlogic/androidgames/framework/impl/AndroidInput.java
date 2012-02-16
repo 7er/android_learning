@@ -1,8 +1,8 @@
-package com.androidgames.framework.impl;
+package com.badlogic.androidgames.framework.impl;
 
 import java.util.List;
 
-import com.androidgames.framework.Input;
+import com.badlogic.androidgames.framework.Input;
 
 public class AndroidInput implements Input {
 
