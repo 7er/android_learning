@@ -22,7 +22,7 @@ public class MainMenuScreen extends Screen {
 				if (true) { // game start touched
 					game.setScreen(new GameScreen(game));
 					if (Settings.soundEnabled) {
-						Assets.click.play(1);
+						//Assets.click.play(1);
 						return;
 					}
 				}

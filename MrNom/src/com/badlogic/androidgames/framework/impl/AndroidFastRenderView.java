@@ -14,10 +14,11 @@ public class AndroidFastRenderView extends SurfaceView implements Runnable {
 	private Thread renderThread;
 	
 
-	public AndroidFastRenderView(AndroidGame context, Bitmap frameBuffer) {
+	public AndroidFastRenderView(AndroidGame context, Bitmap framebuffer) {
 		super(context);
 		holder = getHolder();
 		game = context;
+		this.framebuffer = framebuffer;
 	}
 	void resume() {
 		running = true;

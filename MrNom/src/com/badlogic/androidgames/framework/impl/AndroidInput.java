@@ -2,13 +2,19 @@ package com.badlogic.androidgames.framework.impl;
 
 import java.util.List;
 
+import android.content.Context;
+import android.view.View;
+
 import com.badlogic.androidgames.framework.Input;
+import com.badlogic.androidgames.framework.TouchHandler;
 
 public class AndroidInput implements Input {
+	TouchHandler touchHandler;
 
-	public AndroidInput(AndroidGame androidGame,
-			AndroidFastRenderView renderView, float scaleX, float scaleY) {
-		// TODO Auto-generated constructor stub
+	public AndroidInput(Context context, View view, float scaleX,
+			float scaleY) {
+		// from API level 5
+		touchHandler = new MultiTouchHandler(view, scaleX, scaleY);
 	}
 
 	@Override
@@ -25,14 +31,12 @@ public class AndroidInput implements Input {
 
 	@Override
 	public int getTouchX(int pointer) {
-		// TODO Auto-generated method stub
-		return 0;
+		return touchHandler.getTouchX(pointer);
 	}
 
 	@Override
 	public int getTouchY(int pointer) {
-		// TODO Auto-generated method stub
-		return 0;
+		return touchHandler.getTouchY(pointer);
 	}
 
 	@Override
@@ -61,8 +65,7 @@ public class AndroidInput implements Input {
 
 	@Override
 	public List<TouchEvent> getTouchEvents() {
-		// TODO Auto-generated method stub
-		return null;
+		return touchHandler.getTouchEvents();
 	}
 
 }

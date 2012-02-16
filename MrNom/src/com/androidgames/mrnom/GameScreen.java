@@ -1,19 +1,21 @@
 package com.androidgames.mrnom;
 
+import android.graphics.Color;
+
 import com.badlogic.androidgames.framework.Game;
+import com.badlogic.androidgames.framework.Graphics;
 import com.badlogic.androidgames.framework.Screen;
 
 public class GameScreen extends Screen {
-enum GameState {
-	Ready,
-	Running,
-	Paused,
-	GameOver
-}
-GameState state = GameState.Ready;
+	enum GameState {
+		Ready, Running, Paused, GameOver
+	}
+
+	GameState state = GameState.Ready;
 	World world;
 	int oldScore = 0;
 	String score = "0";
+
 	public GameScreen(Game game) {
 		super(game);
 		world = new World();
@@ -27,8 +29,17 @@ GameState state = GameState.Ready;
 
 	@Override
 	public void present(float deltaTime) {
-		// TODO Auto-generated method stub
+		Graphics g = game.getGraphics();
+		g.drawPixmap(Assets.background, 0, 0);
+		if (state == GameState.Ready) {
+			drawReadyUI();
+		}
+	}
 
+	private void drawReadyUI() {
+		Graphics g = game.getGraphics();
+		g.drawPixmap(Assets.ready, 47, 100);
+		g.drawLine(0, 416, 480, 416, Color.BLACK);
 	}
 
 	@Override
