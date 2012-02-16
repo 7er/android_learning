@@ -1,4 +1,4 @@
-package com.badlogic.androidgames;
+package com.androidgames.framework.impl;
 
 import java.util.Random;
 
@@ -7,19 +7,17 @@ import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-public class FastRenderView extends SurfaceView implements Runnable {
-
+public class AndroidFastRenderView extends SurfaceView implements Runnable {
 	private SurfaceHolder holder;
 	private volatile boolean running = false;
 	private Thread renderThread;
 	private Random rand = new Random();
 	
 
-	public FastRenderView(Context context) {
+	public AndroidFastRenderView(Context context) {
 		super(context);
 		holder = getHolder();
 	}
-
 	void resume() {
 		running = true;
 		renderThread = new Thread(this);
