@@ -18,7 +18,7 @@ import android.os.PowerManager.WakeLock;
 import android.view.Window;
 import android.view.WindowManager;
 
-public class AndroidGame extends Activity implements Game {
+public abstract class AndroidGame extends Activity implements Game {
 	AndroidFastRenderView renderView;
 	Graphics graphics;
 	Audio audio;
@@ -62,38 +62,37 @@ public class AndroidGame extends Activity implements Game {
 
 	@Override
 	public Input getInput() {
-		// TODO Auto-generated method stub
-		return null;
+		return input;
 	}
 
 	@Override
 	public FileIO getFileIO() {
-		// TODO Auto-generated method stub
-		return null;
+		return fileIO;
 	}
 
 	@Override
 	public Graphics getGraphics() {
-		// TODO Auto-generated method stub
-		return null;
+		return graphics;
 	}
 
 	@Override
 	public Audio getAudio() {
-		// TODO Auto-generated method stub
-		return null;
+		return audio;
 	}
 
 	@Override
 	public void setScreen(Screen screen) {
-		// TODO Auto-generated method stub
+		this.screen.pause();
+		this.screen.dispose();
+		screen.resume();
+		screen.update(0);
+		this.screen = screen;
 
 	}
 
 	@Override
 	public Screen getCurrentScreen() {
-		// TODO Auto-generated method stub
-		return null;
+		return screen;
 	}
 
 	@Override
@@ -101,4 +100,24 @@ public class AndroidGame extends Activity implements Game {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		renderView.pause();
+		screen.pause();
+		wakeLock.release();
+		if (isFinishing()) {
+			screen.dispose();
+		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		wakeLock.acquire();
+		screen.resume();
+		renderView.resume();
+	}
+
 }

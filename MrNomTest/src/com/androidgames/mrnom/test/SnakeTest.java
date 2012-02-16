@@ -17,10 +17,10 @@ public class SnakeTest extends TestCase {
 	protected void tearDown() throws Exception {
 		super.tearDown();
 	}
-	
-	void testMovement() {
+
+	public final void testExistence() {
 		
-		assertNotNull(snake))
+		assertNotNull(snake);
 		
 	}
 
