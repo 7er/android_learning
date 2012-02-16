@@ -1,22 +1,23 @@
 package com.androidgames.framework.impl;
 
-import java.util.Random;
-
-import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 public class AndroidFastRenderView extends SurfaceView implements Runnable {
+	AndroidGame game;
+	Bitmap framebuffer;
 	private SurfaceHolder holder;
 	private volatile boolean running = false;
 	private Thread renderThread;
-	private Random rand = new Random();
 	
 
-	public AndroidFastRenderView(Context context) {
+	public AndroidFastRenderView(AndroidGame context, Bitmap frameBuffer) {
 		super(context);
 		holder = getHolder();
+		game = context;
 	}
 	void resume() {
 		running = true;
@@ -25,12 +26,20 @@ public class AndroidFastRenderView extends SurfaceView implements Runnable {
 	}
 
 	public void run() {
+		Rect dstRect = new Rect();
+		long startTime = System.nanoTime();
 		while (running) {
 			if (!holder.getSurface().isValid()) {
 				continue;
-			}
+			}			
+			float deltaTime = (System.nanoTime()-startTime) / 1000000000.0f;
+			startTime = System.nanoTime();
+			game.getCurrentScreen().update(deltaTime);
+			game.getCurrentScreen().present(deltaTime);
+
 			Canvas canvas = holder.lockCanvas();
-			canvas.drawRGB(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256));
+			canvas.getClipBounds(dstRect);
+			canvas.drawBitmap(framebuffer, null, dstRect, null);
 			holder.unlockCanvasAndPost(canvas);
 		}
 	}

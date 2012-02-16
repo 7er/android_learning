@@ -40,13 +40,24 @@ public class AndroidGame extends Activity implements Game {
 		int frameBufferHeight = isLandscape ? 320 : 480;
 		Bitmap frameBuffer = Bitmap.createBitmap(frameBufferWidth,
 				frameBufferHeight, Config.RGB_565);
-		
+
+		float scaleX = (float) frameBufferWidth
+				/ getWindowManager().getDefaultDisplay().getWidth();
+		float scaleY = (float) frameBufferHeight
+				/ getWindowManager().getDefaultDisplay().getHeight();
+
 		PowerManager powerManager = (PowerManager) this
 				.getSystemService(Context.POWER_SERVICE);
 		wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK,
 				"GLGame");
-		
-		//setContentView(R.layout.main);
+
+		renderView = new AndroidFastRenderView(this, frameBuffer);
+		graphics = new AndroidGraphics(getAssets(), frameBuffer);
+		fileIO = new AndroidFileIO(getAssets());
+		audio = new AndroidAudio(this);
+		input = new AndroidInput(this, renderView, scaleX, scaleY);
+		screen = getStartScreen();
+		setContentView(renderView);
 	}
 
 	@Override

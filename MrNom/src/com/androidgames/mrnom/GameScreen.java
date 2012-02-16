@@ -4,10 +4,19 @@ import com.androidgames.framework.Game;
 import com.androidgames.framework.Screen;
 
 public class GameScreen extends Screen {
-
+enum GameState {
+	Ready,
+	Running,
+	Paused,
+	GameOver
+}
+GameState state = GameState.Ready;
+	World world;
+	int oldScore = 0;
+	String score = "0";
 	public GameScreen(Game game) {
 		super(game);
-		// TODO Auto-generated constructor stub
+		world = new World();
 	}
 
 	@Override

@@ -5,7 +5,7 @@ import com.androidgames.framework.Screen;
 
 public class LoadingScreen extends Screen {
 
-	public LoadingScreen(MrNom mrNom) {
+	public LoadingScreen(MrNomGame mrNom) {
 		super(mrNom);
 	}
 
