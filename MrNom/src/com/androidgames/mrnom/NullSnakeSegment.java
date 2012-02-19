@@ -4,10 +4,9 @@ public class NullSnakeSegment implements ISnakeSegment {
 
 	@Override
 	public void setNext(ISnakeSegment segment) {
-		// TODO Auto-generated method stub
-
+		throw new IllegalStateException();
 	}
 	public boolean equals(Object otherObject) {
-		return (NullSnakeSegment) otherObject != null;
+		return otherObject instanceof NullSnakeSegment;
 	}
 }

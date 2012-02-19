@@ -4,7 +4,7 @@ package com.androidgames.mrnom;
 public class SnakeSegment implements ISnakeSegment {
 	private int x;
 	private int y;
-	private ISnakeSegment next = null;
+	private ISnakeSegment next = new NullSnakeSegment();
 
 	public SnakeSegment(int x, int y) {
 		this.x = x;
@@ -12,6 +12,9 @@ public class SnakeSegment implements ISnakeSegment {
 	}
 	
 	public boolean equals(Object otherObject) {
+		if (!(otherObject instanceof SnakeSegment)) {
+			return false;
+		}
 		SnakeSegment other = (SnakeSegment) otherObject;
 		boolean temp = this.x == other.x && this.y == other.y; 
 		if (this.next == null) {

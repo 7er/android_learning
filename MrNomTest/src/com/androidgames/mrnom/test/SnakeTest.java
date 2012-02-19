@@ -37,6 +37,15 @@ public class SnakeTest extends TestCase {
 		assertFalse(expected.equals(actual));
 	}
 	
+	public final void testMultipleSegments() {
+		ISnakeSegment expected = new SnakeSegment(2,4);
+		expected.setNext(new SnakeSegment(2,5));
+		ISnakeSegment actual = new SnakeSegment(2,4);
+		actual.setNext(new SnakeSegment(2, 5));
+		assertEquals(expected, actual);
+		
+	}
+	
 	public final void testAllISnakeSegmentImplementationsCanBeCompared() {
 		ISnakeSegment first = new SnakeSegment(0, 0);
 		ISnakeSegment second = new NullSnakeSegment();

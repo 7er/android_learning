@@ -1,7 +1,7 @@
 package com.androidgames.mrnom;
 
 public class Snake {
-	private ISnakeSegment tail = null;
+	private ISnakeSegment tail = new NullSnakeSegment();
 	public enum Direction {
 		UP
 	}
@@ -20,11 +20,7 @@ public class Snake {
 	
 	public boolean equals(Object otherObject) {
 		Snake other = (Snake) otherObject;
-		boolean temp = this.direction == other.direction;
-		if (this.tail == null) {
-			return temp && this.tail == other.tail;
-		}
-		return temp && other.tail != null && this.tail.equals(other.tail);
+		return this.direction == other.direction && this.tail.equals(other.tail);
 	}
 
 	public void move() {
