@@ -4,6 +4,7 @@ import com.androidgames.mrnom.ISnakeSegment;
 import com.androidgames.mrnom.NullSnakeSegment;
 import com.androidgames.mrnom.Snake;
 import com.androidgames.mrnom.SnakeSegment;
+import com.androidgames.mrnom.World;
 
 import junit.framework.TestCase;
 
@@ -63,15 +64,48 @@ public class SnakeTest extends TestCase {
 		assertEquals(expected, actual);
 	}
 	
-//	public final void testMovement() {
-//		snake.move();
-//		SnkeSegment exectedTail = new SnakeSegment(1, 2);
-//		SnakeSegment tail1 = new SnakeSegment(1, 1);
-//		tail.setNext(tail1);
-//		tail1.setNext(new SnakeSegment(1, 0));
-//
-//		
-//		assertSnakePositoin(expe, snake.positions())
-//	}
-
+	public final void testMovement() {
+		snake.move(null);
+		SnakeSegment expectedTail = new SnakeSegment(1, 2);
+		SnakeSegment tail1 = new SnakeSegment(1, 1);
+		expectedTail.setNext(tail1);
+		tail1.setNext(new SnakeSegment(1, 0));
+		Snake expected = new Snake(Snake.Direction.UP, expectedTail);
+		assertEquals(expected, snake);
+	}
+	
+	public final void testMoveWithWrapAround() {
+		World world = new World();
+		snake = new Snake(Snake.Direction.LEFT, new SnakeSegment(World.maxX, 0));
+		snake.turnRight();
+		snake.move(world);
+		assertEquals(new Snake(Snake.Direction.UP, new SnakeSegment(World.maxX, World.maxY)), snake);
+		snake.turnRight();
+		snake.move(world);
+		assertEquals(new Snake(Snake.Direction.RIGHT, new SnakeSegment(0, World.maxY)), snake);
+		snake.turnRight();
+		snake.move(world);
+		assertEquals(new Snake(Snake.Direction.DOWN, new SnakeSegment(0, 0)), snake);
+		snake.turnRight();
+		snake.move(world);
+		assertEquals(new Snake(Snake.Direction.LEFT, new SnakeSegment(World.maxX, 0)), snake);
+	}
+	
+	public final void testRoundAndRound() {
+		World world = new World();
+		snake = new Snake(Snake.Direction.UP, new SnakeSegment(1, 1));
+		snake.turnLeft();
+		snake.move(world);
+		assertEquals(new Snake(Snake.Direction.LEFT, new SnakeSegment(0, 1)), snake);
+		snake.turnLeft();
+		snake.move(world);
+		assertEquals(new Snake(Snake.Direction.DOWN, new SnakeSegment(0, 2)), snake);
+		snake.turnLeft();
+		snake.move(world);
+		assertEquals(new Snake(Snake.Direction.RIGHT, new SnakeSegment(1, 2)), snake);
+		snake.turnLeft();
+		snake.move(world);
+		assertEquals(new Snake(Snake.Direction.UP, new SnakeSegment(1, 1)), snake);	
+		
+	}
 }

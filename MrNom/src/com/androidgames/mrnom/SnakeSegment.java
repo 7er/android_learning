@@ -16,19 +16,42 @@ public class SnakeSegment implements ISnakeSegment {
 			return false;
 		}
 		SnakeSegment other = (SnakeSegment) otherObject;
-		boolean temp = this.x == other.x && this.y == other.y; 
-		if (this.next == null) {
-			return temp && this.next == other.next;
-		}
-		return temp && other.next != null && this.next.equals(other.next);
+		return this.x == other.x && this.y == other.y && this.next.equals(other.next);
 	}
 	
-	/* (non-Javadoc)
-	 * @see com.androidgames.mrnom.ISnakeSegment#setNext(com.androidgames.mrnom.ISnakeSegment)
-	 */
 	@Override
 	public void setNext(ISnakeSegment segment) {
 		next = segment;
 	}
 
+	public boolean isNull() { return false; }
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setPosition(int x, int y) {
+		this.x = x;
+		this.y = y;
+				
+	}
+	
+	public SnakeSegment head() {
+		if (this.next.isNull()) {
+			return this;
+		}
+		return this.next.head();
+	}
+	
+	public void slide() {
+		if (this.next.isNull()) {
+			return;
+		}
+		this.setPosition(this.next.getX(), this.next.getY());
+		this.next.slide();
+	}
 }

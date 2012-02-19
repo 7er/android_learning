@@ -1,5 +1,10 @@
 package com.androidgames.mrnom;
 
 public interface ISnakeSegment {
-	public abstract void setNext(ISnakeSegment segment);
+	public void setNext(ISnakeSegment segment);
+	public boolean isNull();
+	public SnakeSegment head();
+	public void slide();
+	public int getX();
+	public int getY();
 }
