@@ -66,7 +66,7 @@ public class SnakeTest extends TestCase {
 	}
 	
 	public final void testMovement() {
-		snake.move(null);
+		snake.slide(null);
 		SnakeSegment expectedTail = new SnakeSegment(1, 2);
 		SnakeSegment tail1 = new SnakeSegment(1, 1);
 		expectedTail.setNext(tail1);
@@ -79,16 +79,16 @@ public class SnakeTest extends TestCase {
 		World world = new World();
 		snake = new Snake(Direction.LEFT, new SnakeSegment(World.maxX, 0));
 		snake.turnRight();
-		snake.move(world);
+		snake.slide(world);
 		assertEquals(new Snake(Direction.UP, new SnakeSegment(World.maxX, World.maxY)), snake);
 		snake.turnRight();
-		snake.move(world);
+		snake.slide(world);
 		assertEquals(new Snake(Direction.RIGHT, new SnakeSegment(0, World.maxY)), snake);
 		snake.turnRight();
-		snake.move(world);
+		snake.slide(world);
 		assertEquals(new Snake(Direction.DOWN, new SnakeSegment(0, 0)), snake);
 		snake.turnRight();
-		snake.move(world);
+		snake.slide(world);
 		assertEquals(new Snake(Direction.LEFT, new SnakeSegment(World.maxX, 0)), snake);
 	}
 	
@@ -96,16 +96,16 @@ public class SnakeTest extends TestCase {
 		World world = new World();
 		snake = new Snake(Direction.UP, new SnakeSegment(1, 1));
 		snake.turnLeft();
-		snake.move(world);
+		snake.slide(world);
 		assertEquals(new Snake(Direction.LEFT, new SnakeSegment(0, 1)), snake);
 		snake.turnLeft();
-		snake.move(world);
+		snake.slide(world);
 		assertEquals(new Snake(Direction.DOWN, new SnakeSegment(0, 2)), snake);
 		snake.turnLeft();
-		snake.move(world);
+		snake.slide(world);
 		assertEquals(new Snake(Direction.RIGHT, new SnakeSegment(1, 2)), snake);
 		snake.turnLeft();
-		snake.move(world);
+		snake.slide(world);
 		assertEquals(new Snake(Direction.UP, new SnakeSegment(1, 1)), snake);	
 		
 	}

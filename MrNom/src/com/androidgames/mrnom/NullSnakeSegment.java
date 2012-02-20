@@ -23,4 +23,6 @@ public class NullSnakeSegment implements ISnakeSegment {
 	public int getY() {
 		throw new IllegalStateException();
 	}
+	
+	public ISnakeSegment next() { return this; }
 }

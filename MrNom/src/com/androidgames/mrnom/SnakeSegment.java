@@ -5,6 +5,8 @@ public class SnakeSegment implements ISnakeSegment {
 	private int x;
 	private int y;
 	private ISnakeSegment next = new NullSnakeSegment();
+	
+	public ISnakeSegment next() { return next; }
 
 	public SnakeSegment(int x, int y) {
 		this.x = x;

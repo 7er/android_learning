@@ -5,6 +5,7 @@ public interface ISnakeSegment {
 	public boolean isNull();
 	public SnakeSegment head();
 	public void slide();
+	public ISnakeSegment next();
 	public int getX();
 	public int getY();
 }
