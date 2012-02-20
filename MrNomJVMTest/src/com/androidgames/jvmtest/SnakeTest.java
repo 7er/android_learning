@@ -1,5 +1,6 @@
 package com.androidgames.jvmtest;
 
+import com.androidgames.mrnom.Direction;
 import com.androidgames.mrnom.ISnakeSegment;
 import com.androidgames.mrnom.NullSnakeSegment;
 import com.androidgames.mrnom.Snake;
@@ -60,7 +61,7 @@ public class SnakeTest extends TestCase {
 		ISnakeSegment newTail1 = new SnakeSegment(1, 2);
 		newTail.setNext(newTail1);
 		newTail1.setNext(new SnakeSegment(1, 1));
-		Snake actual = new Snake(Snake.Direction.UP, newTail);
+		Snake actual = new Snake(Direction.UP, newTail);
 		assertEquals(expected, actual);
 	}
 	
@@ -70,42 +71,42 @@ public class SnakeTest extends TestCase {
 		SnakeSegment tail1 = new SnakeSegment(1, 1);
 		expectedTail.setNext(tail1);
 		tail1.setNext(new SnakeSegment(1, 0));
-		Snake expected = new Snake(Snake.Direction.UP, expectedTail);
+		Snake expected = new Snake(Direction.UP, expectedTail);
 		assertEquals(expected, snake);
 	}
 	
 	public final void testMoveWithWrapAround() {
 		World world = new World();
-		snake = new Snake(Snake.Direction.LEFT, new SnakeSegment(World.maxX, 0));
+		snake = new Snake(Direction.LEFT, new SnakeSegment(World.maxX, 0));
 		snake.turnRight();
 		snake.move(world);
-		assertEquals(new Snake(Snake.Direction.UP, new SnakeSegment(World.maxX, World.maxY)), snake);
+		assertEquals(new Snake(Direction.UP, new SnakeSegment(World.maxX, World.maxY)), snake);
 		snake.turnRight();
 		snake.move(world);
-		assertEquals(new Snake(Snake.Direction.RIGHT, new SnakeSegment(0, World.maxY)), snake);
+		assertEquals(new Snake(Direction.RIGHT, new SnakeSegment(0, World.maxY)), snake);
 		snake.turnRight();
 		snake.move(world);
-		assertEquals(new Snake(Snake.Direction.DOWN, new SnakeSegment(0, 0)), snake);
+		assertEquals(new Snake(Direction.DOWN, new SnakeSegment(0, 0)), snake);
 		snake.turnRight();
 		snake.move(world);
-		assertEquals(new Snake(Snake.Direction.LEFT, new SnakeSegment(World.maxX, 0)), snake);
+		assertEquals(new Snake(Direction.LEFT, new SnakeSegment(World.maxX, 0)), snake);
 	}
 	
 	public final void testRoundAndRound() {
 		World world = new World();
-		snake = new Snake(Snake.Direction.UP, new SnakeSegment(1, 1));
+		snake = new Snake(Direction.UP, new SnakeSegment(1, 1));
 		snake.turnLeft();
 		snake.move(world);
-		assertEquals(new Snake(Snake.Direction.LEFT, new SnakeSegment(0, 1)), snake);
+		assertEquals(new Snake(Direction.LEFT, new SnakeSegment(0, 1)), snake);
 		snake.turnLeft();
 		snake.move(world);
-		assertEquals(new Snake(Snake.Direction.DOWN, new SnakeSegment(0, 2)), snake);
+		assertEquals(new Snake(Direction.DOWN, new SnakeSegment(0, 2)), snake);
 		snake.turnLeft();
 		snake.move(world);
-		assertEquals(new Snake(Snake.Direction.RIGHT, new SnakeSegment(1, 2)), snake);
+		assertEquals(new Snake(Direction.RIGHT, new SnakeSegment(1, 2)), snake);
 		snake.turnLeft();
 		snake.move(world);
-		assertEquals(new Snake(Snake.Direction.UP, new SnakeSegment(1, 1)), snake);	
+		assertEquals(new Snake(Direction.UP, new SnakeSegment(1, 1)), snake);	
 		
 	}
 }

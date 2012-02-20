@@ -2,9 +2,6 @@ package com.androidgames.mrnom;
 
 public class Snake {
 	private ISnakeSegment tail = new NullSnakeSegment();
-	public enum Direction {
-		UP, LEFT, DOWN, RIGHT
-	}
 	private Direction direction;
 	public static Snake createDefault() {
 		ISnakeSegment newTail = new SnakeSegment(2, 2);
@@ -60,36 +57,10 @@ public class Snake {
 
 	}
 	public void turnLeft() {
-		switch (direction) {
-		case UP:
-			direction = Direction.LEFT;
-			break;
-		case LEFT:
-			direction = Direction.DOWN;
-			break;
-		case DOWN:
-			direction = Direction.RIGHT;
-			break;
-		case RIGHT:
-			direction = Direction.UP;
-			break;
-		}
+		direction = direction.turnLeft();
 	}
 	public void turnRight() {
-		switch (direction) {
-		case UP:
-			direction = Direction.RIGHT;
-			break;
-		case LEFT:
-			direction = Direction.UP;
-			break;
-		case DOWN:
-			direction = Direction.LEFT;
-			break;
-		case RIGHT:
-			direction = Direction.DOWN;
-			break;
-		}		
+		direction = direction.turnRight();
 	}
 
 }

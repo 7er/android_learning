@@ -1,5 +1,6 @@
 package com.androidgames.mrnom.test;
 
+import com.androidgames.mrnom.Direction;
 import com.androidgames.mrnom.ISnakeSegment;
 import com.androidgames.mrnom.NullSnakeSegment;
 import com.androidgames.mrnom.Snake;
@@ -59,7 +60,7 @@ public class SnakeTest extends TestCase {
 		ISnakeSegment newTail1 = new SnakeSegment(1, 2);
 		newTail.setNext(newTail1);
 		newTail1.setNext(new SnakeSegment(1, 1));
-		Snake actual = new Snake(Snake.Direction.UP, newTail);
+		Snake actual = new Snake(Direction.UP, newTail);
 		assertEquals(expected, actual);
 	}
 	
